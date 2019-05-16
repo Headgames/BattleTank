@@ -5,6 +5,8 @@
 #include "Tank.h"
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Runtime/Engine/Classes/GameFramework/Actor.h"
+#include "Runtime/UMG/Public/Components/WidgetComponent.h"
 #include "TankPlayerController.generated.h"
 
 /**
@@ -21,6 +23,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void AimTowardsCrosshair();
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 
 	ATank* GetControlledTank() const;
 };
