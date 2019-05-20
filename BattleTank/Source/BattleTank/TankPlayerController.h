@@ -7,6 +7,8 @@
 #include "GameFramework/PlayerController.h"
 #include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "Runtime/UMG/Public/Components/WidgetComponent.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
+#include"Runtime/Engine/Public/CollisionQueryParams.h"
 #include "TankPlayerController.generated.h"
 
 /**
@@ -26,6 +28,7 @@ private:
 	void AimTowardsCrosshair();
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
 
 	ATank* GetControlledTank() const;
 
@@ -34,5 +37,8 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float CrossHairYLocation = 0.33333;
+
+	UPROPERTY(EditAnywhere)
+		float LineTraceRange = 10000000;
 	
 };
