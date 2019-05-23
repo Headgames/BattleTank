@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
+#include "Runtime/CoreUObject/Public/UObject/Object.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStaticsTypes.h"
 #include "TankAimingComponent.generated.h"
 
 
@@ -18,13 +21,12 @@ public:
 
 	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 
-	void AimAt(FVector HitLocation);
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-private:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	// TODO add SetTrurretReference
 
+	void AimAt(FVector HitLocation, float LaunchSpeed);
+
+private:	
+
+	void MoveBarrel(FVector AimDirection);
 	UStaticMeshComponent* Barrel = nullptr;
 };
